@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface RegisterProps {
+interface RegisterData {
   firstname: string;
   lastname: string;
   email: string;
@@ -11,7 +11,8 @@ interface RegisterProps {
 }
 
 function Register() {
-  const register: RegisterProps = {
+
+  const register: RegisterData = {
     firstname: '',
     lastname: '',
     email: '',

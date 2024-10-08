@@ -2,16 +2,14 @@ import React from 'react'
 
 interface CourseProps {
   name: string;
-  description: string;
+  isCompleted: boolean;
 }
 
-function Course(data: CourseProps) {
-  return (
-    <>
-      <h2>{data.name}</h2>
-      <p>{data.description}</p>
-    </>
-  );
+function Course({ name, isCompleted }: CourseProps) {
+  if (isCompleted) {
+    return <li >{name} ✅</li>;
+  }
+  return <li>{name} ❌</li>;
 }
 
 export default Course

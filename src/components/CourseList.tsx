@@ -1,13 +1,24 @@
 import Course from "./Course"
 
 function CourseList() {
+  const courses = [
+    { id: 1, name: 'DBP', isCompleted: true },
+    { id: 2, name: 'BD1', isCompleted: false },
+    { id: 3, name: 'EDO', isCompleted: true },
+  ];
+
   return (
     <>
       <h1>Course List</h1>
-      <article>
-        <Course name="React" description="React is a JavaScript library for building user interfaces." />
-        <Course name="Vue" description="Vue is a progressive JavaScript framework for building user interfaces." />
-      </article>
+      <ul>
+        {courses.map((course) => (
+          <Course
+            key={course.id}
+            name={course.name}
+            isCompleted={course.isCompleted}
+          />
+        ))}
+      </ul>
     </>
   )
 }
