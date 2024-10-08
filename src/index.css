@@ -7,9 +7,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,4 +15,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background-color: #E2E2D5;
+}
 
+label {
+  @apply ml-4 font-bold
+}
+
+input {
+  @apply w-full bg-transparent border-2 border-gray-500 rounded-full px-4 py-1 mb-1
+}
+
+textarea {
+  @apply w-full bg-transparent border-2 border-gray-500 rounded-2xl px-4 py-2 mb-2 resize-none h-20
+}
