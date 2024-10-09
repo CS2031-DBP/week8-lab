@@ -1,6 +1,6 @@
-import Course from "./Course";
+import Course from "@components/Course";
 
-function CourseList() {
+export default function CoursePage() {
 	const courses = [
 		{ id: 1, name: "DBP", isCompleted: true },
 		{ id: 2, name: "BD1", isCompleted: false },
@@ -24,5 +24,3 @@ function CourseList() {
 		</article>
 	);
 }
-
-export default CourseList;

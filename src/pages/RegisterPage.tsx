@@ -1,17 +1,9 @@
-import React from "react";
+import { RegisterRequest } from "@interfaces/auth/RegisterRequest";
+import { register } from "@services/auth/register";
+import { useState } from "react";
 
-interface RegisterData {
-	firstname: string;
-	lastname: string;
-	email: string;
-	phone: string;
-	age: number;
-	description: string;
-	password: string;
-}
-
-function Register() {
-	const register: RegisterData = {
+export default function RegisterPage() {
+	const [registerRequest, setRegisterRequest] = useState<RegisterRequest>({
 		firstname: "",
 		lastname: "",
 		email: "",
@@ -19,46 +11,22 @@ function Register() {
 		age: 0,
 		description: "",
 		password: "",
-	};
+	});
 
-	function firstnameChange(e: React.ChangeEvent<HTMLInputElement>) {
-		register.firstname = e.target.value;
-	}
-
-	function lastnameChange(e: React.ChangeEvent<HTMLInputElement>) {
-		register.lastname = e.target.value;
-	}
-
-	function emailChange(e: React.ChangeEvent<HTMLInputElement>) {
-		register.email = e.target.value;
-	}
-
-	function phoneChange(e: React.ChangeEvent<HTMLInputElement>) {
-		register.phone = e.target.value;
-	}
-
-	function ageChange(e: React.ChangeEvent<HTMLInputElement>) {
-		register.age = parseInt(e.target.value);
-	}
-
-	function descriptionChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
-		register.description = e.target.value;
-	}
-
-	function passwordChange(e: React.ChangeEvent<HTMLInputElement>) {
-		register.password = e.target.value;
-	}
-
-	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-		console.log(register);
+	async function handleSubmit(registerRequest: RegisterRequest) {
+		try {
+			const response = await register(registerRequest);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	return (
-		<div className="w-full flex justify-center items-center">
+		<div className="size-full flex justify-center items-center">
 			<article className="w-full sm:w-4/5 md:w-3/5 lg:w-2/5 bg-secondary-200 sm:rounded-xl sm:my-5 px-10 py-4 flex flex-col items-center">
 				<h1 className="text-2xl font-bold mb-3">Register Form</h1>
-				<form onSubmit={handleSubmit}>
+
+				<form onSubmit={() => handleSubmit(registerRequest)}>
 					<section className="w-full sm:flex justify-between">
 						<div className="m-0 sm:mr-2">
 							<label htmlFor="firstname">Firstname: </label>
@@ -66,7 +34,12 @@ function Register() {
 								type="text"
 								name="firstname"
 								required
-								onChange={firstnameChange}
+								onChange={(e) =>
+									setRegisterRequest({
+										...registerRequest,
+										firstname: e.target.value,
+									})
+								}
 							/>
 						</div>
 						<div>
@@ -75,45 +48,75 @@ function Register() {
 								type="text"
 								name="lastname"
 								required
-								onChange={lastnameChange}
+								onChange={(e) =>
+									setRegisterRequest({
+										...registerRequest,
+										lastname: e.target.value,
+									})
+								}
 							/>
 						</div>
 					</section>
+
 					<section>
 						<label htmlFor="email">Email:</label>
 						<input
 							type="email"
 							name="email"
 							required
-							onChange={emailChange}
+							onChange={(e) =>
+								setRegisterRequest({
+									...registerRequest,
+									email: e.target.value,
+								})
+							}
 						/>
 					</section>
+
 					<section>
 						<label htmlFor="phone">Phone:</label>
 						<input
 							type="text"
 							name="phone"
 							required
-							onChange={phoneChange}
+							onChange={(e) =>
+								setRegisterRequest({
+									...registerRequest,
+									phone: e.target.value,
+								})
+							}
 						/>
 					</section>
+
 					<section>
 						<label htmlFor="age">Age:</label>
 						<input
 							type="number"
 							name="age"
 							required
-							onChange={ageChange}
+							onChange={(e) =>
+								setRegisterRequest({
+									...registerRequest,
+									age: parseInt(e.target.value),
+								})
+							}
 						/>
 					</section>
+
 					<section>
 						<label htmlFor="description">Description:</label>
 						<textarea
 							name="description"
 							required
-							onChange={descriptionChange}
+							onChange={(e) =>
+								setRegisterRequest({
+									...registerRequest,
+									description: e.target.value,
+								})
+							}
 						></textarea>
 					</section>
+
 					<section>
 						<label htmlFor="password">Password:</label>
 						<input
@@ -121,13 +124,20 @@ function Register() {
 							name="password"
 							id="password"
 							required
-							onChange={passwordChange}
+							onChange={(e) =>
+								setRegisterRequest({
+									...registerRequest,
+									password: e.target.value,
+								})
+							}
 						/>
 					</section>
+
 					<section>
 						<label htmlFor="repeatPassword">Repeat Password:</label>
 						<input type="password" name="repeatPassword" required />
 					</section>
+
 					<section className="w-full flex justify-center">
 						<button className="bg-gray-500 px-10 mt-1 py-1 rounded-full text-white font-bold">
 							Submit
@@ -138,5 +148,3 @@ function Register() {
 		</div>
 	);
 }
-
-export default Register;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Navbar() {
+export default function Navbar() {
 	return (
 		<nav className="w-full bg-slate-200 py-3 px-4 sm:px-8 flex justify-between items-center">
 			<div className="text-xl">Sparky Students</div>
@@ -15,5 +15,3 @@ function Navbar() {
 		</nav>
 	);
 }
-
-export default Navbar;

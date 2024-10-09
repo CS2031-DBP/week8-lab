@@ -3,11 +3,7 @@ interface CourseProps {
 	isCompleted: boolean;
 }
 
-function Course({ name, isCompleted }: CourseProps) {
-	if (isCompleted) {
-		return <li>{name} ✅</li>;
-	}
-	return <li>{name} ❌</li>;
+export default function Course(props: CourseProps) {
+	if (props.isCompleted) return <li>{props.name} ✅</li>;
+	return <li>{props.name} ❌</li>;
 }
-
-export default Course;

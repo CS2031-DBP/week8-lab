@@ -1,23 +1,18 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./App.css";
-import CourseList from "./components/CourseList";
-import Navbar from "./components/Navbar";
-import Register from "./components/Register";
+import Navbar from "@components/Navbar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CoursePage from "./pages/CoursePage";
+import RegisterPage from "./pages/RegisterPage";
 
-function App() {
+export default function App() {
 	return (
-		<>
-			<Router>
-				<Navbar />
-				<Routes>
-					<Route path="/" element={<Register />} />
-					<Route path="/register" element={<Register />} />
-					<Route path="/courses" element={<CourseList />} />
-					<Route path="*" element={<h1>Not Found</h1>} />
-				</Routes>
-			</Router>
-		</>
+		<BrowserRouter>
+			<Navbar />
+			<Routes>
+				<Route path="/" element={<RegisterPage />} />
+				<Route path="/register" element={<RegisterPage />} />
+				<Route path="/courses" element={<CoursePage />} />
+				<Route path="*" element={<h1>Not Found</h1>} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
-
-export default App;
