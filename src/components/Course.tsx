@@ -7,7 +7,7 @@ interface CourseProps {
 
 function Course({ name, isCompleted }: CourseProps) {
   if (isCompleted) {
-    return <li >{name} ✅</li>;
+    return <li>{name} ✅</li>;
   }
   return <li>{name} ❌</li>;
 }

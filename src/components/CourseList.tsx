@@ -8,18 +8,20 @@ function CourseList() {
   ];
 
   return (
-    <>
-      <h1>Course List</h1>
-      <ul>
-        {courses.map((course) => (
-          <Course
-            key={course.id}
-            name={course.name}
-            isCompleted={course.isCompleted}
-          />
-        ))}
-      </ul>
-    </>
+    <article className="w-full flex justify-center my-5">
+      <section className="sm:w-4/5 md:w-3/5 lg:w-2/5">
+        <h1 className="text-xl">Course List</h1>
+        <ul>
+          {courses.map((course) => (
+            <Course
+              key={course.id}
+              name={course.name}
+              isCompleted={course.isCompleted}
+            />
+          ))}
+        </ul>
+      </section>
+    </article>
   )
 }
 
