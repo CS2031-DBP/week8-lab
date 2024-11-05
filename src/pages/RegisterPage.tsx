@@ -16,6 +16,7 @@ export default function RegisterPage() {
 	async function handleSubmit(registerRequest: RegisterRequest) {
 		try {
 			const response = await register(registerRequest);
+			console.log(response);
 		} catch (error) {
 			console.log(error);
 		}
