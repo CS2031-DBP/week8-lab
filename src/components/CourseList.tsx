@@ -10,7 +10,7 @@ function CourseList() {
 	return (
 		<article className="w-full flex justify-center my-5">
 			<section className="sm:w-4/5 md:w-3/5 lg:w-2/5">
-				<h1 className="text-xl">Course List</h1>
+				<h1 className="text-xl">Lista de Cursos</h1>
 				<ul>
 					{courses.map((course) => (
 						<Course
